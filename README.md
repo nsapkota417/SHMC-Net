@@ -8,3 +8,4 @@ Male infertility accounts for about one-third of global infertility cases. Manua
 Paper Link: https://arxiv.org/pdf/2402.03697.pdf
 
 ** The code for the paper published in ISBI2024 will be published soon.
+E-mail the author (nsapkota@nd.edu), if you want access to the codebase for your immediate project. 
