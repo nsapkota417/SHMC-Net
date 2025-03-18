@@ -14,5 +14,18 @@ Male infertility accounts for about one-third of global infertility cases. Manua
 
 ---
 
+## Using the Code
+
+Install the requirements:
+``pip install -r requirements.txt''
+
+After successfully installing, to train the model run:
+``python train.py -cnf 'config.yaml'
+
+If you want to submit the training code to run on GPUs edit the file ``train.sh'' and run ``bash train.sh''
+
+
+
+
 ## Contact
 For immediate access to the codebase, please email the author at [nsapkota@nd.edu](mailto:nsapkota@nd.edu).
