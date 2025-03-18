@@ -1,0 +1,69 @@
+train:
+
+ # wandb log project name
+ project            : '' 
+ notes              : 'report after 10% Ep' 
+ seed               : 42
+ test_mode          : False
+ 
+ # data_stuff
+ meta               : 'meta_data/scian_rep_total_agg.csv'      # change this to point to your config
+                       
+ scian_total_agg    : False
+ out_channels       : 5                  # 4: Hushem, 5: Scian
+
+ 
+ mask_col           : aid_mask            # aid_mask, hpm_mask
+ image_col          : processed_image     # raw_image, processed_image (3c), aid_mask, hpm_mask
+ aug_type           : A                   # A: apply aug, N: None, SIM: seperate Image and Mask aug
+ in_channels        : 4                   # 1: G.Im, 2:G.Im+Mask, 3:RGB.Im, 4: RGB.Im + Mask
+ feature_merge      : S                   # S: sum, C: concatenate
+ fuse_direction     : [-,-,M2I,M2I,-]     # use either {M2I, I2M, BD} or {-}. M2I = Mask2Image, I2M = Image2Mask, BD = Bi Directional fusion
+
+ oversample         : False
+ soft_label         : W                   # W: Weightage by Alpha, M: Macro, N: None (Default)
+ sl_alpha           : 0.85
+ dynamic_mask       : True
+ gated_fusion       : True
+ 
+ mixup_aug          : True
+ mixup_alpha        : 0.5
+ mixup_by           : C                   # C: class, B: batch, M: Minority Classes
+ 
+ top_n              : 5
+
+ # model
+ backbone           : 'shufflenet_v2_x2_0'         # resnet18, resnet34, resnet50, shufflenet_v2_x2_0
+ ensemble           : ['resnet18', 'resnet34']
+ ensemble_type      : 'DL'
+ pretrained_weights : I           
+                          # I: Imagenet, S: Scratch, 'Path to pretrained model'
+                          # pretrained_weights/mnist_S_shufflenet_v2_x2_0.pth
+                          # pretrained_weights/mnist_I_shufflenet_v2_x2_0.pth
+                          
+ crop_dim           : [64, 64]
+ resize_model_input : []       # [32, 64, 96]      # or [] for default of 64
+ metric_to_use      : A         # A, P, R, F1
+ epochs             : 3
+ batch_size         : 32                       # HUSHEM: 64; SCIAN: 128
+ lr                 : 0.00015
+ dropout            : 0.4
+ wd                 : 1.0
+ val_freq           : 1
+ save_model         : False
+ score_th           : 51
+ model_save_path    : ''        # set your output directory for model checkpoints
+ show_scores_w      : False
+ show_train_run     : False
+ show_test_run      : False
+ show_error_logs    : False
+ show_cm            : True 
+
+mnist:
+ epochs             : 20     
+ backbone           : 'resnet50'    # resnet50, densenet121, densenet201, shufflenet_v2_x2_0
+ t_mode             : 'S'                # S: scratch, I: Imagenet
+ batch_size         : 64
+ lr                 : 0.005
+ 
+
