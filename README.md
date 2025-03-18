@@ -31,4 +31,4 @@ bash train.sh
 
 
 ## Contact
-For immediate access to the codebase, please email the author at [nsapkota@nd.edu](mailto:nsapkota@nd.edu).
+For questions or concerns, please email the author at [nsapkota@nd.edu](mailto:nsapkota@nd.edu).
